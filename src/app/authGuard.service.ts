@@ -12,18 +12,19 @@ import { AuthService } from "./authService";
 @Injectable()
 export class AuthGuardService implements CanActivate, CanActivateChild {
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        this.canActivate(childRoute, state);
+        return this.canActivate(childRoute, state);
     }
     constructor(private authService: AuthService, private router: Router) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        this.authService.isAuthenticated().then((authenticated: boolean) => {
+        return this.authService.isAuthenticated().then((authenticated: boolean) => {
             if (authenticated) {
                 return true;
             }
             else {
-                this.router.navigate(['/']);
+                alert('You have privilidge to display server item!!');
+                this.router.navigate(['/servers']);
             }
         }
         );
