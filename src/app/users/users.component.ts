@@ -26,6 +26,6 @@ export class UsersComponent {
   }
 
   onLoadUser(user: { id: number, name: string }) {
-    this.router.navigate(['/user', user.id, user.name]);
+    this.router.navigate(['/users', user.id, user.name]);
   }
 }
