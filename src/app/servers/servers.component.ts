@@ -25,6 +25,6 @@ export class ServersComponent implements OnInit {
   }
 
   onNavigateServer(server: { id: number, name: string, status: string }) {
-    this.router.navigate(['/servers', server.id]);
+    this.router.navigate(['/servers', server.id], { queryParams: { allowEdit: '1' }, fragment: 'loading' });
   }
 }
