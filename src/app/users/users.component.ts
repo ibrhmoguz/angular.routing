@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -20,4 +21,11 @@ export class UsersComponent {
       name: 'Chris'
     }
   ];
+
+  constructor(private router: Router) {
+  }
+
+  onLoadUser(user: { id: number, name: string }) {
+    this.router.navigate(['/user', user.id, user.name]);
+  }
 }
